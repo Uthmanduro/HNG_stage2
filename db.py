@@ -7,7 +7,12 @@ import os
 # Load environment variables
 load_dotenv()
 
-SQLALCHEMY_DATABASE_URL = os.getenv("SQLALCHEMY_DATABASE_URL")
+db_host = os.getenv("DB_HOST")
+db_port = os.getenv("DB_PORT")
+db_user = os.getenv("DB_USER")
+db_password = os.getenv("DB_PASSWORD")
+
+SQLALCHEMY_DATABASE_URL = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/hng"
 
 # Create engine
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
